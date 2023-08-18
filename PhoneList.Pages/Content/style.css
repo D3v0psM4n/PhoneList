@@ -1,0 +1,26 @@
+﻿/*CUSTOM CSS STYLES*/
+
+/*Pagina principal*/
+body {
+}
+
+/*Lista de contactos extremo izquierdo*/
+
+.top-header {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+.top-header_font {
+    color: #fff;
+}
+
+.left-sidebar_color {
+    color: #66ffff;
+    background: #6699ff;
+    height: 75vh;
+}
+
+.content {
+    margin-left: 0;
+}
