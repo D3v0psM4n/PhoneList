@@ -24,3 +24,9 @@ body {
 .content {
     margin-left: 0;
 }
+
+.item-contact{
+    padding:5px;
+    background-color:lightblue;
+    border-radius:5px;
+}

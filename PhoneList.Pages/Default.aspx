@@ -2,23 +2,25 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar left-sidebar_color">
-            <ul class="nav nav-sidebar">
-                <asp:ListView ID="ListContacts" runat="server">
+<div class="row" style="margin-top:25px">
+        <div class="col-sm-3" style="margin-top:25px">
+            <asp:ListView ID="ListContacts" runat="server" 
+                    OnSelectedIndexChanged="ListContacts_SelectedIndexChanged"
+                    OnSelectedIndexChanging="ListContacts_SelectedIndexChanging"
+                    AutoPostBack="true">
                     <ItemTemplate>
-                        <asp:Label ID="Label1" class="sidebar" runat="server" Text='<%# Eval("Nombre")%>'></asp:Label><br />
+                        <div class="item-contact">
+                           <asp:LinkButton runat="server" ID="ButtonSelect" CommandName="Select" Text='<%#Eval("Nombre") %>'/>
+                        </div>
+                        <br/>
                     </ItemTemplate>
                 </asp:ListView>
-            </ul>
-
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main content">
-            <h4 class="page-header">Contacts</h4>
+        <div class="col-sm-9">
+            <h3>Contacts</h3>
+            <asp:Image ID="AvatarImage" runat="server" ImageUrl="#" />
             <!-- Contenido -->
         </div>
-      </div>
-    </div>
+</div>
 
 </asp:Content>

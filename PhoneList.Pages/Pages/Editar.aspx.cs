@@ -13,5 +13,10 @@ namespace PhoneList.Pages
         {
 
         }
+
+        protected void btnInsertar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

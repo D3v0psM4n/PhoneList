@@ -17,8 +17,7 @@
 
 </head>
 <body>
-    <form runat="server" class="navbar-form navbar-left" role="search">
-
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -51,18 +50,16 @@
                         <a class="navbar-brand top-header_font" href="/">Phone List</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
-                        <form class="navbar-form navbar-right">
                             <%--<input type="text" class="form-control" placeholder="Search...">--%>
                             <ul class="nav navbar-nav">
                                 <li><a runat="server" href="~/Pages/Crear">Crear</a></li>
                                 <li><a runat="server" href="~/Pages/Editar">Editar</a></li>
                             </ul>
-                        </form>
                     </div>
                 </div>
         </nav>
 
-        <div class="container body-content">
+        <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
             <hr />
 
