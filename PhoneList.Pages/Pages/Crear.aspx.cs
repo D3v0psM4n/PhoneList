@@ -28,6 +28,7 @@ namespace PhoneList.Pages
 
             ContactoService contactoService = new ContactoService();
             contactoService.Crear(contacto);
+            Response.Redirect("/");
         }
     }
 }

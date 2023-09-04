@@ -38,19 +38,46 @@ namespace PhoneList.Pages.Services
             }
         }
 
-        public void Crear(Contacto datos)
+        public Contacto ObtenerContactoPorId(int requestId)
         {
             try
             {
-                Contacto contacto = new Contacto()
-                {
-                    Nombre = datos.Nombre,
-                    Apellido = datos.Apellido,
-                    Compania = datos.Compania
-                };
+                return _modelPhoneDbContext.Contacto.FirstOrDefault(x => x.Id == requestId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
+        public void Crear(Contacto contacto)
+        {
+            try
+            {
                 _modelPhoneDbContext.Contacto.Add(contacto);
                 _modelPhoneDbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Editar(Contacto request)
+        {
+            try
+            {
+                var contacto = _modelPhoneDbContext.Contacto.FirstOrDefault(x => x.Id == request.Id);
+
+                if (contacto != null)
+                {
+                    contacto.Nombre = request.Nombre;
+                    contacto.Apellido = request.Apellido;
+                    contacto.Compania = request.Compania;
+
+                    _modelPhoneDbContext.SaveChanges();
+                }
+
             }
             catch (Exception)
             {

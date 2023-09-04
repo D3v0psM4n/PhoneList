@@ -9,6 +9,9 @@ namespace PhoneList.Pages
 {
     public partial class _Default : Page
     {
+        // Llamar al método de la conxión
+        ContactoService contactoService = new ContactoService();
+
         /// <summary>
         /// Declaraciones ejecutadas al cargar la página de inicio
         /// </summary>
@@ -16,8 +19,6 @@ namespace PhoneList.Pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Llamar al método de la conxión
-            ContactoService contactoService = new ContactoService();
             var contacts = contactoService.ObtenerTodos();
 
             // Estabelecer la fuente de la DB y el vinculo al control especificado
@@ -44,10 +45,17 @@ namespace PhoneList.Pages
 
             // 3.Busco el control anidado ButtonSelect con la propiedad FindControl, 
             // y convierto en LinkButton para acceder a sus propiedades
-            var linkButton = (LinkButton)item.FindControl("ButtonSelect");
+            var label = (Label)item.FindControl("lblIdentify");
 
-            // 4.Obtengo el nombre de LinkButton (para usarlo posteriormente)
-            var nombre = linkButton.Text;
+
+            var contacto = contactoService.ObtenerContactoPorId(Convert.ToInt32(label.Text));
+
+            lblFirstName.Text = contacto.Nombre;
+            lblFirstName.Visible = true;
+            lblLastName.Text = contacto.Apellido;
+            lblLastName.Visible = true;
+            lblCompany.Text = contacto.Compania;
+            lblCompany.Visible = true;
         }
 
         protected void ListContacts_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)

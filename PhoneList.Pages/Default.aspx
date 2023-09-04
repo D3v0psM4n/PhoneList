@@ -11,6 +11,7 @@
                     <ItemTemplate>
                         <div class="item-contact">
                            <asp:LinkButton runat="server" ID="ButtonSelect" CommandName="Select" Text='<%#Eval("Nombre") %>'/>
+                            <asp:Label runat="server" ID="lblIdentify" Text='<%#Eval("Id") %>' Visible="false"/>
                         </div>
                         <br/>
                     </ItemTemplate>
@@ -18,8 +19,12 @@
         </div>
         <div class="col-sm-9">
             <h3>Contacts</h3>
-            <asp:Image ID="AvatarImage" runat="server" ImageUrl="#" />
+            <asp:Image ID="AvatarImage" runat="server" ImageUrl="#" /><br />
             <!-- Contenido -->
+
+            <asp:Label ID="lblFirstName" runat="server" Visible="false"></asp:Label><br />
+            <asp:Label ID="lblLastName" runat="server" Visible="false"></asp:Label><br />
+            <asp:Label ID="lblCompany" runat="server" Visible="false"></asp:Label>
         </div>
 </div>
 
