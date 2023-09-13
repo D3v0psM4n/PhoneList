@@ -47,14 +47,20 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand top-header_font" href="/">Phone List</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse top-header_color">
-                            <%--<input type="text" class="form-control" placeholder="Search...">--%>
-<%--                            <ul class="nav navbar-nav">
-                                <li><a runat="server" href="~/Pages/Crear">Crear</a></li>
-                                <li><a runat="server" href="~/Pages/Editar">Editar</a></li>
-                            </ul>--%>
+                        <div class="content_position-center col-md-3">
+                            <img src="Images/phone-number-white.png" class="top-header_logo" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="navbar-brand top-header_font" href="/">Phone List</a>
+                        </div>
+                        <div class="col-md-9 top-header_padding">
+                            <div class="col-md-8 content_position-center">
+                                <input type="text" class="form-control top-header_search" placeholder="Contacto...">
+                            </div>
+                            <div class="col-md-4 content_position-center">
+                                <button type="button" class="btn btn-primary right-sidebar_size-button top-header_button">Buscar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </nav>

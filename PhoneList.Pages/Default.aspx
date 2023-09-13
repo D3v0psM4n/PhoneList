@@ -13,7 +13,7 @@
                 AutoPostBack="true">
                 <ItemTemplate>
                     <div class="left-sidebar_item">
-                        <asp:LinkButton ID="ButtonSelect" runat="server" CommandName="Select" Text='<%#Eval("Nombre") %>' />
+                        <asp:LinkButton ID="ButtonSelect" runat="server" CommandName="Select" Text='<%#Eval("Nombre") %>' CssClass="content_panel-font" />
                         <asp:Label ID="lblIdentify" runat="server" Text='<%#Eval("Id") %>' Visible="false" />
                     </div>
                     <br />
@@ -70,15 +70,15 @@
 
                 <asp:Panel ID="contentPanelRight" runat="server" Visible="false" CssClass="col-md-12">
                     <div class="content_position-center">
-                        <asp:Image ID="AvatarImage" runat="server" ImageUrl="#" /><br />
-                        <br />
+                        <asp:Image ID="AvatarImage" runat="server" ImageUrl="../Images/avatar.png" CssClass="content_avatar"/>
                     </div>
+                    <br />
 
                     <div class="content_position-center">
                         <button type="button" class="btn btn-default right-sidebar_size-button">Favoritos</button><br />
                     </div>
                     <div class="content_position-center">
-                        <button type="button" class="btn btn-default right-sidebar_size-button">Editar</button><br />
+                        <a runat="server" href="~/Pages/Editar" class="btn btn-default right-sidebar_size-button">Editar</a>
                     </div>
                     <div class="content_position-center">
                         <button type="button" class="btn btn-default right-sidebar_size-button">Borrar</button>

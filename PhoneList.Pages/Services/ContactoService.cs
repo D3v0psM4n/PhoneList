@@ -147,5 +147,41 @@ namespace PhoneList.Pages.Services
                 throw;
             }
         }
+
+        public List<EtiquetaTelefono> ObtenerEtiquetaTelefono()
+        {
+            try
+            {
+                return _modelPhoneDbContext.EtiquetaTelefono.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<EtiquetaEmail> ObtenerEtiquetaEmail()
+        {
+            try
+            {
+                return _modelPhoneDbContext.EtiquetaEmail.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<EtiquetaFecha> ObtenerEtiquetaFecha()
+        {
+            try
+            {
+                return _modelPhoneDbContext.EtiquetaFecha.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

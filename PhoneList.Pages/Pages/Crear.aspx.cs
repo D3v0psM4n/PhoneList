@@ -11,10 +11,24 @@ namespace PhoneList.Pages
 {
     public partial class Crear : Page
     {
-        ModelPhoneDbContext modelPhoneDbContext = new ModelPhoneDbContext();
+        ContactoService contactoService = new ContactoService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                var phones = contactoService.ObtenerEtiquetaTelefono();
+                ddlEtiquetaTelefono.DataSource = phones;
+                ddlEtiquetaTelefono.DataBind();
+
+                var emails = contactoService.ObtenerEtiquetaEmail();
+                ddlEtiquetaCorreo.DataSource = emails;
+                ddlEtiquetaCorreo.DataBind();
+
+                var dates = contactoService.ObtenerEtiquetaFecha();
+                ddlEtiquetaFecha.DataSource = dates;
+                ddlEtiquetaFecha.DataBind();
+            }
         }
 
         protected void btnInsertar_Click(object sender, EventArgs e)
@@ -26,9 +40,20 @@ namespace PhoneList.Pages
                 Compania = txtCompania.Text
             };
 
-            ContactoService contactoService = new ContactoService();
             contactoService.Crear(contacto);
             Response.Redirect("/");
+        }
+
+        protected void ddlEtiquetaTelefono_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        protected void ddlEtiquetaCorreo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        protected void ddlEtiquetaFecha_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
