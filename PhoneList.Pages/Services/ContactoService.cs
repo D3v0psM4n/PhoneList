@@ -50,6 +50,69 @@ namespace PhoneList.Pages.Services
             }
         }
 
+        public List<string> ObtenerTelefonosPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                var contactoTelefonos = contacto.ContactoTelefono;
+
+                List<string> telefonos = new List<string>();
+                foreach (var contactoTelefono in contactoTelefonos)
+                {
+                    telefonos.Add(contactoTelefono.Telefono.Numero);
+                }
+
+                return telefonos;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<string> ObtenerEmailsPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                var contactoEmails = contacto.ContactoEmail;
+
+                List<string> emails = new List<string>();
+                foreach (var contactoEmail in contactoEmails)
+                {
+                    emails.Add(contactoEmail.Email.Correo);
+                }
+
+                return emails;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<DateTime?> ObtenerFechasPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                var contactoFechas = contacto.ContactoFechaImportante;
+
+                List<DateTime?> fechas = new List<DateTime?>();
+                foreach (var contactoFecha in contactoFechas)
+                {
+                    fechas.Add(contactoFecha.FechaImportante.Fecha);
+                }
+
+                return fechas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void Crear(Contacto contacto)
         {
             try

@@ -50,12 +50,21 @@ namespace PhoneList.Pages
 
             var contacto = contactoService.ObtenerContactoPorId(Convert.ToInt32(label.Text));
 
+            contentPanelLeft.Visible = true;
+            contentPanelRight.Visible = true;
+            TitleContact.Visible = true;
             lblFirstName.Text = contacto.Nombre;
             lblFirstName.Visible = true;
             lblLastName.Text = contacto.Apellido;
             lblLastName.Visible = true;
             lblCompany.Text = contacto.Compania;
             lblCompany.Visible = true;
+
+            // obtener la lista de telefonos en una variable
+            var telefonos = contactoService.ObtenerTelefonosPorContactoId(contacto.Id);
+
+            ListOfPhones.DataSource = telefonos;
+            ListOfPhones.DataBind();
         }
 
         protected void ListContacts_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)
