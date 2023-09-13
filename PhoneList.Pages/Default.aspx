@@ -13,8 +13,8 @@
                 AutoPostBack="true">
                 <ItemTemplate>
                     <div class="left-sidebar_item">
-                        <asp:LinkButton runat="server" ID="ButtonSelect" CommandName="Select" Text='<%#Eval("Nombre") %>' />
-                        <asp:Label runat="server" ID="lblIdentify" Text='<%#Eval("Id") %>' Visible="false" />
+                        <asp:LinkButton ID="ButtonSelect" runat="server" CommandName="Select" Text='<%#Eval("Nombre") %>' />
+                        <asp:Label ID="lblIdentify" runat="server" Text='<%#Eval("Id") %>' Visible="false" />
                     </div>
                     <br />
                 </ItemTemplate>
@@ -34,17 +34,30 @@
                         <br />
                         <br />
 
-                        <asp:Label ID="lblFirstName" runat="server" Visible="false"></asp:Label><br />
-                        <asp:Label ID="lblLastName" runat="server" Visible="false"></asp:Label><br />
+                        <asp:Label ID="lblFirstName" runat="server" Visible="false"></asp:Label>
+                        <br />
+                        <asp:Label ID="lblLastName" runat="server" Visible="false"></asp:Label>
+                        <br />
                         <asp:Label ID="lblCompany" runat="server" Visible="false"></asp:Label>
-                        <asp:Label ID="lblPhone" runat="server" Visible="false"></asp:Label>
-                        <asp:Label ID="lblEmail" runat="server" Visible="false"></asp:Label>
-                        <asp:Label ID="lblDate" runat="server" Visible="false"></asp:Label>
                         <br />
 
                         <asp:ListView ID="ListOfPhones" runat="server">
                             <ItemTemplate>
-                                <asp:Label ID="Phones" runat="server" Text='<%# Container.DataItem %>' />
+                                <asp:Label ID="lblPhone" runat="server" Text='<%# Container.DataItem %>' />
+                                <br />
+                            </ItemTemplate>
+                        </asp:ListView>
+
+                        <asp:ListView ID="ListOfEmails" runat="server">
+                            <ItemTemplate>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# Container.DataItem %>' />
+                                <br />
+                            </ItemTemplate>
+                        </asp:ListView>
+
+                        <asp:ListView ID="ListOfDates" runat="server">
+                            <ItemTemplate>
+                                <asp:Label ID="lblDate" runat="server" Text='<%# Container.DataItem %>' />
                                 <br />
                             </ItemTemplate>
                         </asp:ListView>
@@ -74,13 +87,6 @@
 
             </div>
 
-            <%--            <div class="col-md-8">
-            </div>
-            <div class="col-md-4">
-                <div class="content_position-center">
-                    <button type="button" class="btn btn-primary right-sidebar_size-button">Agregar</button>
-                </div>
-            </div>--%>
         </div>
 
     </div>
@@ -95,7 +101,7 @@
             <div class="col-sm-8"></div>
             <div class="col-sm-4">
                 <div class="content_position-center">
-                    <button type="button" class="btn btn-primary right-sidebar_size-button">Agregar</button>
+                    <a runat="server" href="~/Pages/Crear" class="btn btn-primary right-sidebar_size-button">Agregar</a>
                 </div>
             </div>
         </div>
