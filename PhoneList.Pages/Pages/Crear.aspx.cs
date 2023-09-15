@@ -1,4 +1,5 @@
 ﻿using PhoneList.Pages.Data;
+using PhoneList.Pages.Dto;
 using PhoneList.Pages.Services;
 using System;
 using System.Collections.Generic;
@@ -33,14 +34,20 @@ namespace PhoneList.Pages
 
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
-            Contacto contacto = new Contacto()
+            ContactoRequest contactoRequest = new ContactoRequest()
             {
                 Nombre = txtNombre.Text,
                 Apellido = txtApellido.Text,
-                Compania = txtCompania.Text
+                Compania = txtCompania.Text,
+                Telefono = txtTelefono.Text,
+                EtiquetaTelefonoId = Convert.ToInt32(ddlEtiquetaTelefono.SelectedValue),
+                Email = txtCorreo.Text,
+                EtiquetaEmailId = Convert.ToInt32(ddlEtiquetaCorreo.SelectedValue),
+                //FechaImportante = txtFecha.Text,
+                EtiquetaFechaId = Convert.ToInt32(ddlEtiquetaFecha.SelectedValue)
             };
 
-            contactoService.Crear(contacto);
+            contactoService.Crear(contactoRequest);
             Response.Redirect("/");
         }
 

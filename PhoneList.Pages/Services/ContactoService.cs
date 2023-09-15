@@ -1,4 +1,5 @@
 ﻿using PhoneList.Pages.Data;
+using PhoneList.Pages.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,11 +114,36 @@ namespace PhoneList.Pages.Services
             }
         }
 
-        public void Crear(Contacto contacto)
+        public void Crear(ContactoRequest contactoRequest)
         {
             try
             {
+                Contacto contacto = new Contacto()
+                {
+                    Nombre = contactoRequest.Nombre,
+                    Apellido = contactoRequest.Apellido,
+                    Compania = contactoRequest.Compania
+                };
+
                 _modelPhoneDbContext.Contacto.Add(contacto);
+                _modelPhoneDbContext.SaveChanges();
+                var contactoId = contacto.Id;
+
+                Telefono telefono = new Telefono()
+                {
+                    Numero = contactoRequest.Telefono,
+                    EtiquetaId = contactoRequest.EtiquetaTelefonoId // > 0
+                };
+                _modelPhoneDbContext.Telefono.Add(telefono);
+                _modelPhoneDbContext.SaveChanges();
+                var telefonoId = telefono.Id;
+
+                ContactoTelefono contactoTelefono = new ContactoTelefono()
+                {
+                    ContactoId = contactoId,
+                    TelefonoId = telefonoId
+                };
+                _modelPhoneDbContext.ContactoTelefono.Add(contactoTelefono);
                 _modelPhoneDbContext.SaveChanges();
             }
             catch (Exception)

@@ -190,7 +190,7 @@
     <Compile Include="Data\FechaImportante.cs" />
     <Compile Include="Data\ModelPhoneDbContext.cs" />
     <Compile Include="Data\Telefono.cs" />
-    <Compile Include="Dto\ContactoResponse.cs" />
+    <Compile Include="Dto\ContactoRequest.cs" />
     <Compile Include="Pages\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
