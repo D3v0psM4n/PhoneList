@@ -43,7 +43,7 @@ namespace PhoneList.Pages
                 EtiquetaTelefonoId = Convert.ToInt32(ddlEtiquetaTelefono.SelectedValue),
                 Email = txtCorreo.Text,
                 EtiquetaEmailId = Convert.ToInt32(ddlEtiquetaCorreo.SelectedValue),
-                //FechaImportante = txtFecha.Text,
+                FechaImportante = DateTime.ParseExact(txtFecha.Text, "dd/MM/yyyy", null),
                 EtiquetaFechaId = Convert.ToInt32(ddlEtiquetaFecha.SelectedValue)
             };
 

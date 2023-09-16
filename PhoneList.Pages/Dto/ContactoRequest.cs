@@ -5,6 +5,8 @@ using System.Web;
 
 namespace PhoneList.Pages.Dto
 {
+    // Request = Solicitud (se envia información a la DB)
+    // Response = Respuesta (se recibe información de la DB)
     public class ContactoRequest
     {
         public int Int { get; set; }

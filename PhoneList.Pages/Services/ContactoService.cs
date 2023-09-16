@@ -118,6 +118,7 @@ namespace PhoneList.Pages.Services
         {
             try
             {
+                // Lleno y salvo la tabla "Contacto" que no depende de otra
                 Contacto contacto = new Contacto()
                 {
                     Nombre = contactoRequest.Nombre,
@@ -129,15 +130,17 @@ namespace PhoneList.Pages.Services
                 _modelPhoneDbContext.SaveChanges();
                 var contactoId = contacto.Id;
 
+                // Lleno y salvo la tabla "Telefono" que no depende de otra
                 Telefono telefono = new Telefono()
                 {
                     Numero = contactoRequest.Telefono,
-                    EtiquetaId = contactoRequest.EtiquetaTelefonoId // > 0
+                    EtiquetaId = contactoRequest.EtiquetaTelefonoId // posible bug?? EtiquetaId > 0
                 };
                 _modelPhoneDbContext.Telefono.Add(telefono);
                 _modelPhoneDbContext.SaveChanges();
                 var telefonoId = telefono.Id;
 
+                // Con ambos IDs generados lleno la tabla "ContactoTelefono"
                 ContactoTelefono contactoTelefono = new ContactoTelefono()
                 {
                     ContactoId = contactoId,
