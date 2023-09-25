@@ -1,12 +1,7 @@
-﻿using PhoneList.Pages.Data;
-using PhoneList.Pages.Dto;
+﻿using PhoneList.Pages.Dto;
 using PhoneList.Pages.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace PhoneList.Pages
 {
@@ -32,7 +27,7 @@ namespace PhoneList.Pages
             }
         }
 
-        protected void btnInsertar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             ContactoRequest contactoRequest = new ContactoRequest()
             {

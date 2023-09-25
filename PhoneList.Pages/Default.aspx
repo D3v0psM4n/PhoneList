@@ -33,7 +33,6 @@
                         <asp:Label ID="TitleContact" runat="server" Visible="false" CssClass="content_font-bold" Text="Contacts"></asp:Label>
                         <br />
                         <br />
-
                         <asp:Label ID="lblFirstName" runat="server" Visible="false"></asp:Label>
                         <br />
                         <asp:Label ID="lblLastName" runat="server" Visible="false"></asp:Label>

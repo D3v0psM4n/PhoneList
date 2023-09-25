@@ -51,6 +51,7 @@ namespace PhoneList.Pages.Services
             }
         }
 
+
         public List<string> ObtenerTelefonosPorContactoId(int contactoId)
         {
             try
@@ -114,6 +115,122 @@ namespace PhoneList.Pages.Services
             }
         }
 
+        /// <summary>
+        /// Devuelve una lista de tuplas con el telefono y la etiquetaId asociada
+        /// </summary>
+        /// <param name="contactoId"></param>
+        /// <returns>Telefono (string), EtiquetaId (int)</returns>
+        public List<Tuple<string,int>> ObtenerTelefonosConEtiquetaPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                // contactoId + telefonoId
+                var contactoTelefonos = contacto.ContactoTelefono;
+
+                List<Tuple<string, int>> telefonosEtiquetaTupla = new List<Tuple<string,int>>();
+                if (contactoTelefonos.Count != 0)
+                {
+                    foreach (var contactoTelefono in contactoTelefonos)
+                    {
+                        var telefono = contactoTelefono.Telefono.Numero;
+
+                        var etiqueta = contactoTelefono.Telefono.EtiquetaTelefono == null ? 1 :
+                            contactoTelefono.Telefono.EtiquetaTelefono.Id; // true null -> asigna 0 para que no se selecciona ninguno en el ddl
+                                                                           // false null -> asigna el valor almacenado
+                        telefonosEtiquetaTupla.Add(Tuple.Create(telefono, etiqueta));
+                    }
+                }
+                else
+                {
+                    telefonosEtiquetaTupla.Add(Tuple.Create("", 1));
+                }
+
+                return telefonosEtiquetaTupla;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista de tuplas con el email y la etiquetaId asociada
+        /// </summary>
+        /// <param name="contactoRequest"></param>
+        /// <returns>Email (string), EtiquetaId (int)</returns>
+        public List<Tuple<string,int>> ObtenerEmailsConEtiquetaPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                var contactoEmails = contacto.ContactoEmail;
+
+                List<Tuple<string, int>> emailsEtiquetaTupla = new List<Tuple<string, int>>();
+                if (contactoEmails.Count != 0)
+                {
+                    foreach (var contactoEmail in contactoEmails)
+                    {
+                        var email = contactoEmail.Email.Correo;
+
+                        var etiqueta = contactoEmail.Email.EtiquetaEmail == null ? 1 :
+                            contactoEmail.Email.EtiquetaEmail.Id;
+
+                        emailsEtiquetaTupla.Add(Tuple.Create(email, etiqueta));
+                    }
+                }
+                else
+                {
+                    emailsEtiquetaTupla.Add(Tuple.Create("", 1));
+                }
+
+                return emailsEtiquetaTupla;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista de tuplas con la fecha y la etiquetaId asociada
+        /// </summary>
+        /// <param name="contactoId"></param>
+        /// <returns>FEcha (string), EtiquetaId</returns>
+        public List<Tuple<string,int>> ObtenerFechasConEtiquetaPorContactoId(int contactoId)
+        {
+            try
+            {
+                var contacto = ObtenerContactoPorId(contactoId);
+                var contactoFechas = contacto.ContactoFechaImportante;
+
+                List<Tuple<string, int>> fechasEtiquetaTupla = new List<Tuple<string, int>>();
+                if (contactoFechas.Count != 0)
+                {
+                    foreach (var contactoFecha in contactoFechas)
+                    {
+                        var fecha = Convert.ToString(contactoFecha.FechaImportante.Fecha);
+
+                        var etiqueta = contactoFecha.FechaImportante.EtiquetaFecha == null ? 1 :
+                            contactoFecha.FechaImportante.EtiquetaFecha.Id;
+
+                        fechasEtiquetaTupla.Add(Tuple.Create(fecha, etiqueta));
+                    }
+                }
+                else
+                {
+                    fechasEtiquetaTupla.Add(Tuple.Create("", 1));
+                }
+
+                return fechasEtiquetaTupla;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
         public void Crear(ContactoRequest contactoRequest)
         {
             try
@@ -155,21 +272,11 @@ namespace PhoneList.Pages.Services
             }
         }
 
-        public void Editar(Contacto request)
+        public void Editar(ContactoRequest contactoRequest)
         {
             try
             {
-                var contacto = _modelPhoneDbContext.Contacto.FirstOrDefault(x => x.Id == request.Id);
-
-                if (contacto != null)
-                {
-                    contacto.Nombre = request.Nombre;
-                    contacto.Apellido = request.Apellido;
-                    contacto.Compania = request.Compania;
-
-                    _modelPhoneDbContext.SaveChanges();
-                }
-
+                
             }
             catch (Exception)
             {
@@ -177,6 +284,8 @@ namespace PhoneList.Pages.Services
             }
         }
 
+
+        /// Para DropDownList
         public List<EtiquetaTelefono> ObtenerEtiquetaTelefono()
         {
             try

@@ -2,7 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-
     <h3>Crear contacto</h3>
 
     <div class="col-md-6">
@@ -61,7 +60,7 @@
     <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-6">
-            <asp:Button ID="btnInsertar" runat="server" class="btn btn-primary right-sidebar_size-button" Text="Guardar" OnClick="btnInsertar_Click" />
+            <asp:Button ID="btnGuardar" runat="server" class="btn btn-primary right-sidebar_size-button" Text="Guardar" OnClick="btnGuardar_Click" />
             <a runat="server" href="/" class="btn btn-danger right-sidebar_size-button">Cancelar</a>
         </div>
     </div>

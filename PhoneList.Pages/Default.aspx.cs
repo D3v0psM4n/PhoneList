@@ -46,10 +46,12 @@ namespace PhoneList.Pages
 
             // 3. Busco el control anidado ButtonSelect con la propiedad FindControl, 
             // y convierto en LinkButton para acceder a sus propiedades
-            var label = (Label)item.FindControl("lblIdentify");
+            var lblIdentify = (Label)item.FindControl("lblIdentify");
+
+            Session["ContactId"] = lblIdentify.Text; // Variable de Sesión
 
             // 4. Hago visible los datos del contacto en la sección de contenido
-            var contacto = contactoService.ObtenerContactoPorId(Convert.ToInt32(label.Text));
+            var contacto = contactoService.ObtenerContactoPorId(Convert.ToInt32(lblIdentify.Text));
 
             contentPanelLeft.Visible = true;
             contentPanelRight.Visible = true;
